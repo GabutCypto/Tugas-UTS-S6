@@ -1,10 +1,12 @@
-from django.urls import path
+from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import HPViewSet, HP1JutaanViewSet, HP2JutaanViewSet
+from .views import KategoriViewSet, HPViewSet, PenjualanViewSet
 
 router = DefaultRouter()
+router.register(r'kategori', KategoriViewSet)
 router.register(r'hp', HPViewSet)
-router.register(r'hp1jutaan', HP1JutaanViewSet)
-router.register(r'hp2jutaan', HP2JutaanViewSet)
+router.register(r'penjualan', PenjualanViewSet)
 
-urlpatterns = router.urls
+urlpatterns = [
+    path('', include(router.urls)),
+]
