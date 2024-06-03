@@ -7,14 +7,14 @@ class KategoriSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class HPSerializer(serializers.ModelSerializer):
-    kategori = KategoriSerializer()
+    kategori = serializers.PrimaryKeyRelatedField(queryset=Kategori.objects.all())
 
     class Meta:
         model = HP
         fields = '__all__'
 
 class PenjualanSerializer(serializers.ModelSerializer):
-    hp = HPSerializer()
+    hp = serializers.PrimaryKeyRelatedField(queryset=HP.objects.all())
 
     class Meta:
         model = Penjualan
